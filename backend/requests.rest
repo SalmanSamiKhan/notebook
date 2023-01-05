@@ -1,5 +1,24 @@
+# Home
 GET http://localhost:3001
 
 ###
 
-GET http://localhost:3001/home
+# Create
+POST http://localhost:3001/create
+
+###
+
+# Read
+GET http://localhost:3001/notes
+
+###
+
+# Update
+PATCH http://localhost:3001/update
+
+###
+
+# Delete
+DELETE http://localhost:3001/delete
+
+
