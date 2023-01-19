@@ -1,24 +1,29 @@
 # Home
-GET http://localhost:3001
+GET http://localhost:5000
+
+###
+
+# Authentication
+POST http://localhost:5000/api/auth
 
 ###
 
 # Create
-POST http://localhost:3001/create
+POST http://localhost:5000/api/create
 
 ###
 
 # Read
-GET http://localhost:3001/notes
+GET http://localhost:5000/api/notes
 
 ###
 
 # Update
-PATCH http://localhost:3001/update
+PATCH http://localhost:5000/api/update
 
 ###
 
 # Delete
-DELETE http://localhost:3001/delete
+DELETE http://localhost:5000/api/delete
 
 

@@ -1,25 +1,21 @@
 import express from 'express'
 import connectToMongo from './database.js'
-import noteRouter from './routes/noteRoutes.js'
-import homeRouter from './routes/homeRoutes.js'
+import noteRouter from './routes/notes.js'
 import createRouter from './routes/createRoutes.js'
-import updateRouter from './routes/update.js'
-import deleteRouter from './routes/delete.js'
 import authRouter from './routes/auth.js'
+import userRouter from './routes/userRoutes.js'
 
 const app = express()
 connectToMongo() // importing connectToMongo function from db.js
 app.use(express.json()) // for using json
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 
-app.use('/api/', homeRouter )
-app.use('/api/auth', authRouter )
-app.use('/api/create', createRouter )
-app.use('/api/notes', noteRouter )
-app.use('/api/update', updateRouter )
-app.use('/api/delete', deleteRouter )
+app.use('/api/users', userRouter)
+app.use('/api/auth', authRouter)
+app.use('/api/create', createRouter)
+app.use('/api/notes', noteRouter)
 
-const localPort = 3000
-app.listen(localPort || process.env.PORT, ()=>{
+const localPort = 5000
+app.listen(localPort || process.env.PORT, () => {
     console.log(`server running on http://localhost:${localPort}`)
 })
