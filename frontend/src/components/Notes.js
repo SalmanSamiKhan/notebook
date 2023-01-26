@@ -16,14 +16,13 @@ const Notes = () => {
   }, [])
 
   const editNote = (currentNote) => {
-    // console.log('Edit request received',currentNote._id)
     ref.current.click()
     setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
 
   }
 
-  const handleClick = (e) => {
-    // console.log('updating note...', note)
+  const handleSubmit = (e) => {
+    e.preventDefault()
     updateNote(note.id, note.etitle, note.edescription, note.etag)
     refClose.current.click()
   }
@@ -53,24 +52,24 @@ const Notes = () => {
               </button>
             </div>
             <div className="modal-body">
-              <form>
-                <div className="mb-3">
-                  <label htmlFor="etitle" className="form-label">Title</label>
-                  <input type="text" className="form-control" id="etitle" name='etitle' aria-describedby="etitle" minLength={3} value={note.etitle} onChange={onChange} />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="edescription" className="form-label">Description</label>
-                  <textarea type="text" className="form-control" id="edescription" name='edescription' minLength={5} aria-describedby="edescription" rows={5} value={note.edescription} onChange={onChange} />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="etag" className="form-label">Tag</label>
-                  <input type="text" className="form-control" id="etag" name='etag' aria-describedby="etag" value={note.etag} onChange={onChange} />
-                </div>
-              </form>
+            <div className="form my-3">
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                        <label htmlFor="etitle" className="form-label">Title</label>
+                        <input type="text" className="form-control" id="etitle" name='etitle' aria-describedby="etitle" value={note.etitle} required minLength={3} onChange={onChange} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="edescription" className="form-label">Description</label>
+                        <input type="text" className="form-control" id="edescription" name='edescription' aria-describedby="edescription"  value={note.edescription}  required minLength={5} onChange={onChange} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="etag" className="form-label">Tag</label>
+                        <input type="text" className="form-control" id="etag" name='etag' aria-describedby="etag" value={note.etag} onChange={onChange} />
+                    </div>
+                    <button ref={refClose} type="button" className="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+                    <button type="submit" className="btn btn-primary m-2" >Update</button>
+                </form>
             </div>
-            <div className="modal-footer">
-              <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" onClick={handleClick}>Update Note</button>
             </div>
           </div>
         </div>

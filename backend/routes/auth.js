@@ -14,20 +14,21 @@ const JWT_SECRET = 'somethingsecret'
 const signupConditions = [
     body('name', 'Enter a valid name').isLength({ min: 3 }),
     body('email', 'Enter a valid email').isEmail(),
-    body('password', 'Password must be atleast 5 characters').isLength({ min: 5 })
+    body('password', 'Password must be atleast 5 characters').isLength({ min: 4 })
 ]
 const signinConditions = [
     body('email', 'Enter a valid email').isEmail(),
-    // body('password', 'Password must be atleast 5 characters').isLength({ min: 5 })
+    // body('password', 'Password must be atleast 5 characters').isLength({ min: 4 })
 ]
 // ********** Signup ***********
 //* url: api/auth/signup'
 authRouter.post('/signup', signupConditions, async (req, res) => { // async req,res
+    let success = false
     const errors = validationResult(req) // validation result using express validator
     // if there are errors, if conditions are not fulfilled
     if (!errors.isEmpty()) {
         // sending errors object in json which contains an array returned form validationResult
-        return res.status(400).json({ errors: errors.array() })
+        return res.status(400).json({ success, errors: errors.array() })
     }
     // otherwise find whether this email already exists
     try {
@@ -35,7 +36,7 @@ authRouter.post('/signup', signupConditions, async (req, res) => { // async req,
         let user = await User.findOne({ email: req.body.email })
         // if email already exists
         if (user) {
-            return res.status(400).json({ error: 'Sorry! A user with this email already exists' })
+            return res.status(400).json({ success, error: 'Sorry! A user with this email already exists' })
         }
 
         // otherwise construct new user from User model which takes data from req.body
@@ -59,22 +60,24 @@ authRouter.post('/signup', signupConditions, async (req, res) => { // async req,
         }
         // assigning token using jwt.sign method
         const authtoken = jwt.sign(data, JWT_SECRET)
-        console.log(authtoken)
+        // console.log(authtoken)
+        success = true
         // sending jwt token to user
-        res.json({ authtoken })
+        res.json({ success, authtoken })
     } catch (error) {
         console.error(error.message)
-        res.status(500).send('Inernal Server Error')
+        res.status(500).send(success,'Inernal Server Error')
     }
 })
 
 // ********** Signin **********
 //  * api/auth/signin
 authRouter.post('/signin', signinConditions, async (req, res) => {
+    let success = false
     const errors = validationResult(req) // validation result using express validator
     // if there are errors, if conditions are not fulfilled
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() })
+        return res.status(400).json({ success, errors: errors.array() })
     }
     // otherwise find whether this email already exists
     const { email, password } = req.body
@@ -82,25 +85,25 @@ authRouter.post('/signin', signinConditions, async (req, res) => {
         let user = await User.findOne({ email })
         // if email doesn't exists
         if (!user) {
-            return res.status(400).json({ error: 'Please try to signin using correct email and password' })
+            return res.status(400).json({ success, error: 'Please try to signin using correct email and password' })
         }
         const passwordCompare = await bcrypt.compare(password, user.password)
         if (!passwordCompare) {
-            return res.status(400).json({ error: 'Please try to signin using correct email and password' })
+            return res.status(400).json({ success, error: 'Please try to signin using correct email and password' })
         }
         const payload = {
             user: {
                 id: user.id
             }
         }
-
+        success = true
         const authtoken = jwt.sign(payload, JWT_SECRET)
-        res.json({authtoken})
+        res.json({success,authtoken})
 
 
     } catch (error) {
         console.error(error.message)
-        res.status(500).send('Internal Server Error')
+        res.status(500).send(success,'Internal Server Error')
     }
 })
 
