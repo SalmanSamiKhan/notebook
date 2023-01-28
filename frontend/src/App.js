@@ -6,6 +6,8 @@ import About from './components/About';
 import NoteState from './context/note/NoteState';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
+import { useState } from 'react';
+import Alert from './components/Alert';
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
       <NoteState>
         <Router>
           <Navbar />
+          {/* <Alert /> */}
           <div className="container">
           <Routes>
             <Route path='/' element={<Home />} />

@@ -15,13 +15,13 @@ const Signup = () => {
             body: JSON.stringify({ name:info.name, email: info.email, password:info.password })
         });
         const json = await response.json()
-        // console.log(json)
+        console.log(json)
         if(json.success){
             // save the auth token and redirect
             localStorage.setItem('token',json.authtoken)
             navigate('/')
         }else{
-            alert('Invalid Name, Email or Password!')
+            alert('Sorry! A user with this email already exists')
         }
     }
     const onChange = (e) => {

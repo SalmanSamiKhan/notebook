@@ -15,11 +15,12 @@ const Signin = () => {
             body: JSON.stringify({ email: info.email, password:info.password })
         });
         const json = await response.json()
-        // console.log(json)
+        console.log(json)
         if(json.success){
             // save the auth token and redirect
             localStorage.setItem('token',json.authtoken)
             navigate('/')
+            alert('Signed In Successfully!')
         }else{
             alert('Invalid Email or Password!')
         }

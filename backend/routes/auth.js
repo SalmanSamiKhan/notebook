@@ -60,7 +60,7 @@ authRouter.post('/signup', signupConditions, async (req, res) => { // async req,
         }
         // assigning token using jwt.sign method
         const authtoken = jwt.sign(data, JWT_SECRET)
-        // console.log(authtoken)
+        console.log(authtoken)
         success = true
         // sending jwt token to user
         res.json({ success, authtoken })
