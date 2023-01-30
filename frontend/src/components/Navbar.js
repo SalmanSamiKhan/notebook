@@ -1,13 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Link, useLocation, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
     let location = useLocation();
     let path = location.pathname;
     const navigate = useNavigate()
     const handleSignout = ()=>{
         localStorage.removeItem('token')
         navigate('/signin')
+        props.showAlert('Signed out Successfully','success')
     }
     return (
         <div>
@@ -36,10 +37,6 @@ const Navbar = () => {
                             <button className="btn btn-primary mx-1" onClick={handleSignout} >Signout</button>
                         </div>
                         }
-                        {/* <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
-                        </form> */}
                     </div>
                 </div>
             </nav>

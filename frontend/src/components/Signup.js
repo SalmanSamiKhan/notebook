@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Signup = () => {
+const Signup = (props) => {
     const host = 'http://localhost:5000'
-    const [info,setInfo] = useState({name:'',email:'',password:''})
+    const [info, setInfo] = useState({ name: '', email: '', password: '' })
     const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -12,34 +12,38 @@ const Signup = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name:info.name, email: info.email, password:info.password })
+            body: JSON.stringify({ name: info.name, email: info.email, password: info.password })
         });
         const json = await response.json()
         console.log(json)
-        if(json.success){
+        if (json.success) {
             // save the auth token and redirect
-            localStorage.setItem('token',json.authtoken)
+            localStorage.setItem('token', json.authtoken)
             navigate('/')
-        }else{
-            alert('Sorry! A user with this email already exists')
+            props.showAlert('Account Created Successfully','success')
+        } else {
+            props.showAlert('Sorry! A user with this email already exists','danger')
         }
     }
     const onChange = (e) => {
         setInfo({
-          ...info,
-          [e.target.name]: e.target.value // name = email, password
+            ...info,
+            [e.target.name]: e.target.value // name = email, password
         })
-      }
+    }
     return (
         <div className='m-5'>
+            <div className='my-3'>
+                <h2>Create Your Account</h2>
+            </div>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
-                    <input type="text" className="form-control" name="name" id="name" value={info.name} required minLength={3} onChange={onChange}  />
+                    <input type="text" className="form-control" name="name" id="name" value={info.name} required minLength={3} onChange={onChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
-                    <input type="email" className="form-control" name="email" id="email" value={info.email} required onChange={onChange}  />
+                    <input type="email" className="form-control" name="email" id="email" value={info.email} required onChange={onChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
