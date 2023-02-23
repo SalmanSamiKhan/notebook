@@ -65,7 +65,7 @@ const Notes = (props) => {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="edescription" className="form-label">Description</label>
-                        <input type="text" className="form-control" id="edescription" name='edescription' aria-describedby="edescription"  value={note.edescription}  required minLength={5} onChange={onChange} />
+                        <textarea type="text" rows="3" className="form-control" id="edescription" name='edescription' aria-describedby="edescription"  value={note.edescription}  required minLength={5} onChange={onChange} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="etag" className="form-label">Tag</label>

@@ -32,7 +32,7 @@ const Signup = (props) => {
         })
     }
     return (
-        <div className='m-5'>
+        <div className='m-5' style={{maxWidth:'600px'}}>
             <div className='my-3'>
                 <h2>Create Your Account</h2>
             </div>

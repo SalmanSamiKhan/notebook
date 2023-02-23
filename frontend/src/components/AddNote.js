@@ -21,8 +21,8 @@ const AddNote = (props) => {
     }
     
     return (
-        <div>
-            <h1>Add a note</h1>
+        <div className='container' style={{maxWidth:'800px'}}>
+            <h1 className='text-center'>Add a note</h1>
             <div className="form my-3">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
@@ -31,7 +31,7 @@ const AddNote = (props) => {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="description" className="form-label">Description</label>
-                        <input type="text" className="form-control" id="description" name='description' aria-describedby="edescription"  value={note.description}  required minLength={5} onChange={onChange} />
+                        <textarea type="text" rows="5" className="form-control" id="description" name='description' aria-describedby="edescription"  value={note.description}  required minLength={5} onChange={onChange} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="tag" className="form-label">Tag</label>
@@ -40,7 +40,7 @@ const AddNote = (props) => {
                     <button type="submit" className="btn btn-primary" >Add Note</button>
                 </form>
             </div>
-            <h1>See your notes</h1>
+            <h1 className='text-center my-5'>Your Notes</h1>
         </div>
     )
 }

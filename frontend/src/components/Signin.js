@@ -33,7 +33,7 @@ const Signin = (props) => {
         })
     }
     return (
-        <div className='m-5'>
+        <div className='m-5' style={{maxWidth:'600px'}}>
             <div className='my-3'>
                 <h2>Signin to your account</h2>
             </div>

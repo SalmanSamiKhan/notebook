@@ -1,0 +1,21 @@
+{
+  "name": "notebook",
+  "version": "1.0.0",
+  "description": "An online note taking app",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",
+    "start":"node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SalmanSamiKhan/notebook.git"
+  },
+  "author": "Salman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SalmanSamiKhan/notebook/issues"
+  },
+  "homepage": "https://github.com/SalmanSamiKhan/notebook#readme"
+}

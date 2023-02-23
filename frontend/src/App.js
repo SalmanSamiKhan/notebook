@@ -8,7 +8,7 @@ import Signup from './components/Signup';
 import Signin from './components/Signin';
 import { useState } from 'react';
 import Alert from './components/Alert';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
 
 function App() {
   const [alert, setAlert] = useState(null)
@@ -28,7 +28,7 @@ function App() {
         <Router>
           <Navbar showAlert={showAlert} />
           <Alert alert={alert} />
-          <div className="container">
+          <div className="container d-flex flex-column site-container">
             <Routes>
               <Route path='/' element={<Home showAlert={showAlert} />} />
               <Route path='/about' element={<About />} />
@@ -36,9 +36,9 @@ function App() {
               <Route path='/signin' element={<Signin showAlert={showAlert} />} />
             </Routes>
           </div>
+          <Footer/>
         </Router>
       </NoteState>
-      <Footer />
     </>
   );
 }
