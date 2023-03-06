@@ -33,18 +33,19 @@ const Signin = (props) => {
         })
     }
     return (
-        <div className='m-5' style={{maxWidth:'600px'}}>
+        <div className='container my-5' style={{maxWidth:'600px'}}>
             <div className='my-3'>
                 <h2>Signin to your account</h2>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
-                    <input type="email" className="form-control" name="email" id="email" value={info.email} onChange={onChange} />
+                    <input type="email" className="form-control" name="email" id="email" value={info.email}
+                    required pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$' onChange={onChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" name="password" id="password" value={info.password} onChange={onChange} />
+                    <input type="password" className="form-control" name="password" id="password" value={info.password} onChange={onChange} required />
                 </div>
                 <button type="submit" className="btn btn-primary">Signin</button>
             </form>
