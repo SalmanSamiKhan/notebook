@@ -8,7 +8,7 @@ const Signin = (props) => {
     const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const response = await fetch(`${host}/api/auth/signin`, {
+        const response = await fetch(`/api/auth/signin`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
