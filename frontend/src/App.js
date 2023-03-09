@@ -36,7 +36,7 @@ function App() {
               <Route path='/signin' element={<Signin showAlert={showAlert} />} />
             </Routes>
           </div>
-          {/* <Footer/> */}
+          <Footer/>
         </Router>
       </NoteState>
     </>
