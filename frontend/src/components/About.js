@@ -13,7 +13,7 @@
 
 // export default About
 
-import { MDBIcon } from 'mdb-react-ui-kit'
+// import { MDBIcon } from 'mdb-react-ui-kit'
 import React from 'react'
 // import { Helmet } from 'react-helmet-async'
 
