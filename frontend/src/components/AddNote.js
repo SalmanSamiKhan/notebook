@@ -27,11 +27,11 @@ const AddNote = (props) => {
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="title" className="form-label">Title</label>
-                        <input type="text" className="form-control" id="title" name='title' aria-describedby="title" value={note.title} required minLength={3} onChange={onChange} />
+                        <input type="text" className="form-control" id="title" name='title' aria-describedby="title" value={note.title} required onChange={onChange} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="description" className="form-label">Description</label>
-                        <textarea type="text" rows="5" className="form-control" id="description" name='description' aria-describedby="edescription"  value={note.description}  required minLength={5} onChange={onChange} />
+                        <textarea type="text" rows="5" className="form-control" id="description" name='description' aria-describedby="edescription"  value={note.description}  required  onChange={onChange} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="tag" className="form-label">Tag</label>

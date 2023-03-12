@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Signup = (props) => {
     const host = 'http://localhost:5000'
@@ -39,7 +39,7 @@ const Signup = (props) => {
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
-                    <input type="text" className="form-control" name="name" id="name" value={info.name} required minLength={3} onChange={onChange} />
+                    <input type="text" className="form-control" name="name" id="name" value={info.name} required  onChange={onChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
@@ -50,8 +50,10 @@ const Signup = (props) => {
                     <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control" name="password" id="password" value={info.password} required minLength={4} onChange={onChange} />
                 </div>
-                <button type="submit" className="btn btn-primary">Signup</button>
+                <button type="submit" className="btn btn-primary mb-2">Signup</button>
             </form>
+            Already have an account? <br />
+            <Link to={'/signin'}>Signin to your account</Link>
         </div>
     )
 }

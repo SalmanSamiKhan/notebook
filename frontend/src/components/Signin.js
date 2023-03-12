@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Alert from './Alert'
 
 const Signin = (props) => {
@@ -47,8 +47,10 @@ const Signin = (props) => {
                     <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control" name="password" id="password" value={info.password} onChange={onChange} required />
                 </div>
-                <button type="submit" className="btn btn-primary">Signin</button>
+                <button type="submit" className="btn btn-primary mb-2">Signin</button>
             </form>
+            Don't have an account? <br />
+            <Link to={'/signup'}>Create your account</Link>
         </div>
     )
 }
