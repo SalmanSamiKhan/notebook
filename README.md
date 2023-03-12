@@ -1,9 +1,8 @@
 # Online-Todolist
 
-An online note taking app
+## An online note taking app
 
-## Live
-[Live](https://mynotebook.cyclic.app/)
+# [Live](https://mynotebook.cyclic.app/)
 
 ## Screenshots
 
