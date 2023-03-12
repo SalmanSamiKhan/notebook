@@ -2,6 +2,8 @@
 
 An online note taking app
 
+## Live
+[Live](https://mynotebook.cyclic.app/)
 
 ## Screenshots
 
@@ -10,11 +12,6 @@ An online note taking app
 ![Online-Todolist](ss2.png)
 
 ![Online-Todolist](ss3.png)
-
-
-## Live
-Deployed on Render <br/>
-[Live](https://online-todolist.onrender.com)
 
 
 ## About
